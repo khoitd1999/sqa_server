@@ -13,6 +13,9 @@ spring:
       properties:
          hibernate:
             dialect: org.hibernate.dialect.SQLServer2012Dialect #every database have varies dialect. Configuration connection databe. Ex: mysql
+            jdbc:
+               lob:
+                  non_contextual_creation: true
             enable_lazy_load_no_trans: true
             event:
               merge:
