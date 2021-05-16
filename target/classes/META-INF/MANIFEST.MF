@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: quanlycuahang
+Implementation-Version: 1.0
+Built-By: Admin
+Implementation-Vendor-Id: com
+Build-Jdk: 1.8.0_241
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/quanlycuahang
+Created-By: Maven Integration for Eclipse
+
