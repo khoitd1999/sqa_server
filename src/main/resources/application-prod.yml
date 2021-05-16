@@ -3,9 +3,9 @@ server:
 spring:
    profiles: dev
    datasource:
-      url: 
-      username: 
-      password: 
+      url: jdbc:sqlserver://localhost:1433;database=quanlycuahang
+      username: sa
+      password: 1
    jpa:
       hibernate:
          ddl-auto: none
