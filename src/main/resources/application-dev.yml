@@ -1,0 +1,19 @@
+server:
+   port: 3333
+spring:
+   profiles: dev
+   datasource:
+      url: jdbc:sqlserver://localhost:1433;database=quanlycuahang
+      username: sa
+      password: 1
+   jpa:
+      hibernate:
+         ddl-auto: none
+         #ddl-auto: create-drop
+      properties:
+         hibernate:
+            dialect: org.hibernate.dialect.SQLServer2012Dialect #every database have varies dialect. Configuration connection databe. Ex: mysql
+            enable_lazy_load_no_trans: true
+            event:
+              merge:
+                  entity_copy_observer: allow #fix bug : Multiple represent in same entity
