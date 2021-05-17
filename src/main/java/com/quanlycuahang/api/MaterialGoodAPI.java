@@ -31,26 +31,26 @@ public class MaterialGoodAPI {
 	private MaterialGoodService materialGoodService;
 	
 	@GetMapping(value = "/material/load-all")
-	private ResponseEntity<List<MaterialGood>> loadAll(@RequestParam Integer page, @RequestParam Integer size) {
+	public ResponseEntity<List<MaterialGood>> loadAll(@RequestParam Integer page, @RequestParam Integer size) {
 		Pageable pageable = new PageRequest(page, size);
 		Page<MaterialGood> result = materialGoodService.loadAll(pageable);
 		return new ResponseEntity<List<MaterialGood>>(result.getContent(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/material/save")
-	private ResponseEntity<Integer> save(@RequestBody MaterialGood materialGood) {
+	public ResponseEntity<Integer> save(@RequestBody MaterialGood materialGood) {
 		Integer status = materialGoodService.save(materialGood);
 		return new ResponseEntity<>(status, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/material/find")
-	private ResponseEntity<MaterialGood> findOne(@RequestParam String id) {
+	public ResponseEntity<MaterialGood> findOne(@RequestParam String id) {
 		MaterialGood result = materialGoodService.findOne(id);
 		return new ResponseEntity<MaterialGood>(result, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/material/find-all")
-	private ResponseEntity<List<MaterialGood>> findAll() {
+	public ResponseEntity<List<MaterialGood>> findAll() {
 		List<MaterialGood> result = materialGoodService.findAll();
 		return new ResponseEntity<List<MaterialGood>>(result, HttpStatus.OK);
 	}

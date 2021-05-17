@@ -33,26 +33,26 @@ public class PPOrderAPI {
 	private PPOrderService ppOrderService;
 	
 	@GetMapping(value = "/pporder/load-all")
-	private ResponseEntity<List<PPOrderDTO>> loadAll(@RequestParam Integer page, @RequestParam Integer size) {
+	public ResponseEntity<List<PPOrderDTO>> loadAll(@RequestParam Integer page, @RequestParam Integer size) {
 		Pageable pageable = new PageRequest(page, size);
 		Page<PPOrderDTO> result = ppOrderService.loadAll(pageable);
 		return new ResponseEntity<List<PPOrderDTO>>(result.getContent(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/pporder/get-all-supplier")
-	private ResponseEntity<List<SupplierDTO>> loadAll() {
+	public ResponseEntity<List<SupplierDTO>> loadAll() {
 		List<SupplierDTO> result = ppOrderService.loadAllSupplier();
 		return new ResponseEntity<List<SupplierDTO>>(result, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/pporder/save")
-	private ResponseEntity<Integer> save(@RequestBody PPOrder ppOrder) {
+	public ResponseEntity<Integer> save(@RequestBody PPOrder ppOrder) {
 		Integer status = ppOrderService.save(ppOrder);
 		return new ResponseEntity<Integer>(status, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/pporder/find")
-	private ResponseEntity<PPOrder> findOne(@RequestParam String id) {
+	public ResponseEntity<PPOrder> findOne(@RequestParam String id) {
 		PPOrder result = ppOrderService.findOne(id);
 		return new ResponseEntity<PPOrder>(result, HttpStatus.OK);
 	}

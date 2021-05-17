@@ -25,13 +25,13 @@ public class UserStoreAPI {
 	private UserStoreService userStoreService;
 	
 	@PostMapping(value = "/check")
-	private ResponseEntity<UserStore> checkUser(@RequestBody UserStore userStore) {
+	public ResponseEntity<UserStore> checkUser(@RequestBody UserStore userStore) {
 		UserStore user = userStoreService.checkUser(userStore);
 		return new ResponseEntity<UserStore>(user, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/load-all")
-	private ResponseEntity<List<UserStore>> loadAll() {
+	public ResponseEntity<List<UserStore>> loadAll() {
 		List<UserStore> list = userStoreService.loadAll();
 		return new ResponseEntity<List<UserStore>>(list, HttpStatus.OK);
 	}

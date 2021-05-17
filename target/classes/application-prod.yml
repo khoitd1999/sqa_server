@@ -1,14 +1,14 @@
 spring:
    profiles: prod
    datasource:
-      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      driver-class-name: org.postgresql.Driver
       url:
       username: 
       password: 
    jpa:
       properties:
          hibernate:
-            dialect: org.hibernate.dialect.SQLServer2012Dialect #every database have varies dialect. Configuration connection databe. Ex: mysql
+            dialect: org.hibernate.dialect.PostgreSQLDialect #every database have varies dialect. Configuration connection databe. Ex: mysql
             jdbc:
                lob:
                   non_contextual_creation: true
