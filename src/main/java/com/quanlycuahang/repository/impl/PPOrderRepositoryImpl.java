@@ -31,7 +31,7 @@ public class PPOrderRepositoryImpl implements PPOrderRepositoryCustom{
 		List<PPOrderDTO> result = new ArrayList<PPOrderDTO>();
 		
 		if (total.longValue() > 0) {
-			Query query = entityManager.createNativeQuery("select p.id id, s.supplierCode supplierCode, p.no no, p.date date, p.totalAmount totalAmount " + sql, "PPOrderDTO");
+			Query query = entityManager.createNativeQuery("select p.id id, s.supplierCode supplierCode, p.no, p.date date, p.totalAmount totalAmount " + sql, "PPOrderDTO");
 			query.setFirstResult((int) pageable.getOffset());
 			query.setMaxResults(pageable.getPageSize());
 			result = query.getResultList();
