@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "materialgoods", schema = "materialgoods")
+@Table(name = "materialgoods")
 public class MaterialGood implements Serializable {
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class MaterialGood implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name = "materialgoodcode")
