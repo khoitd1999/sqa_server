@@ -45,7 +45,7 @@ public class MaterialGoodService {
 	}
 	
 	public Integer delete(String id) {
-		Integer count1 = materialGoodRepository.checkRef(id);
+		Integer count1 = materialGoodRepository.checkRef(Integer.parseInt(id));
 		if (count1 > 0) {
 			return 1;
 		}

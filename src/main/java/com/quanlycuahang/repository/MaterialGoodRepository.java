@@ -15,7 +15,7 @@ public interface MaterialGoodRepository extends CrudRepository<MaterialGood, Lon
 	List<MaterialGood> findAll();
 	
 	@Query(value = "select count(1) from PPOrderDetail where materialGoodID = ?1 ; ", nativeQuery = true)
-	Integer checkRef(String id);
+	Integer checkRef(Integer id);
 
 	
 }
