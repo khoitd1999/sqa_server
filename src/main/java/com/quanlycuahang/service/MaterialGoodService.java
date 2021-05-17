@@ -45,10 +45,10 @@ public class MaterialGoodService {
 	}
 	
 	public Integer delete(String id) {
-//		Integer count1 = materialGoodRepository.checkRef(id);
-//		if (count1 > 0) {
-//			return 1;
-//		}
+		Integer count1 = materialGoodRepository.checkRef(id);
+		if (count1 > 0) {
+			return 1;
+		}
 		materialGoodRepository.deleteById(Long.parseLong(id));
 		return 0;
 	}
