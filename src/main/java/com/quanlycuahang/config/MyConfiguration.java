@@ -15,7 +15,7 @@ public class MyConfiguration {
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowCredentials(true);
 //		configuration.addAllowedOrigin("http://localhost:4200");
-		configuration.addAllowedOrigin("http://server-qlch.herokuapp.com");
+		configuration.addAllowedOrigin("http://qlch.herokuapp.com");
 		configuration.addAllowedHeader("*");
 		configuration.addAllowedMethod("*");
 		src.registerCorsConfiguration("/**", configuration);
