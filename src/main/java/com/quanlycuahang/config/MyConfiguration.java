@@ -9,16 +9,17 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class MyConfiguration {
 	
-//	@Bean
-//	public CorsFilter corsFilter() {
-//		UrlBasedCorsConfigurationSource src = new UrlBasedCorsConfigurationSource();
-//		CorsConfiguration configuration = new CorsConfiguration();
-//		configuration.setAllowCredentials(true);
+	@Bean
+	public CorsFilter corsFilter() {
+		UrlBasedCorsConfigurationSource src = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowCredentials(true);
 //		configuration.addAllowedOrigin("http://localhost:4200");
-//		configuration.addAllowedHeader("*");
-//		configuration.addAllowedMethod("*");
-//		src.registerCorsConfiguration("/**", configuration);
-//		return new CorsFilter(src);
-//	}
+		configuration.addAllowedOrigin("http://server-qlch.herokuapp.com");
+		configuration.addAllowedHeader("*");
+		configuration.addAllowedMethod("*");
+		src.registerCorsConfiguration("/**", configuration);
+		return new CorsFilter(src);
+	}
 	
 }
