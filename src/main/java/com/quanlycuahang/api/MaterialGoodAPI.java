@@ -25,7 +25,7 @@ import com.quanlycuahang.utils.PaginationUtil;
 
 @RestController
 @RequestMapping(value = "/api")
-//@CrossOrigin
+@CrossOrigin
 public class MaterialGoodAPI {
 	@Autowired
 	private MaterialGoodService materialGoodService;

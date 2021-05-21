@@ -27,7 +27,7 @@ import com.quanlycuahang.service.PPOrderService;
 
 @RestController
 @RequestMapping(value = "/api")
-//@CrossOrigin
+@CrossOrigin
 public class PPOrderAPI {
 	@Autowired
 	private PPOrderService ppOrderService;

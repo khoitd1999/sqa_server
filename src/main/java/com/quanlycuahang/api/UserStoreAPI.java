@@ -18,7 +18,7 @@ import com.quanlycuahang.service.UserStoreService;
 
 @RestController
 @RequestMapping(value = "/api")
-//@CrossOrigin
+@CrossOrigin
 public class UserStoreAPI {
 	
 	@Autowired
