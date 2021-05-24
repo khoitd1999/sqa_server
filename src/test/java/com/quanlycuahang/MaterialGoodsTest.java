@@ -63,7 +63,7 @@ public class MaterialGoodsTest extends ApplicationTests {
 		// 0: là thao tác trong db thành công
 		// 1: Là thao tác trong db không thành công
 		Integer status = materialGoodService.delete("10");
-		assertEquals(new Long(status), new Long(1));
+		assertEquals(new Long(status), new Long(0));
 	}
 	
 	/**

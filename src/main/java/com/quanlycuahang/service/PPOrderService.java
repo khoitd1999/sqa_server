@@ -69,6 +69,7 @@ public class PPOrderService {
 	}
 	
 	public void delete(String id) {
-		ppOrderRepository.deleteById(Long.parseLong(id));
+		ppOrderRepository.deleteOne(Long.parseLong(id));
+		ppOrderRepository.deleteChildren(Long.parseLong(id));
 	}
 }
