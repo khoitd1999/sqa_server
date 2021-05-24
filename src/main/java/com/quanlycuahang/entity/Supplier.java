@@ -47,7 +47,7 @@ public class Supplier implements Serializable{
 	@Column(name = "suppliercode")
 	private String supplierCode;
 	
-	@Column(name = "supplierName")
+	@Column(name = "suppliername")
 	private String supplierName;
 	
 	@Column(name = "address")

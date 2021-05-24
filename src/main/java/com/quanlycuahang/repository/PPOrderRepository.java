@@ -7,6 +7,9 @@ import com.quanlycuahang.entity.PPOrder;
 
 public interface PPOrderRepository extends CrudRepository<PPOrder, Long>, PPOrderRepositoryCustom{
 	
+	@Query(value = " select * from PPOrder where no = ?1; ", nativeQuery = true)
+	PPOrder findOneByNo(String no);
+	
 	@Query(value = "select count(*) from PPOrder where no = ?1", nativeQuery = true)
 	Integer checkDuplicateCode(String no);
 }

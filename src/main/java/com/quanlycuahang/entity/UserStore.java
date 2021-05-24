@@ -36,6 +36,15 @@ public class UserStore implements Serializable{
 	@Column(name = "code")
 	private String code;
 
+	public UserStore() {
+		
+	}
+
+	public UserStore(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
 	public Long getId() {
 		return id;
 	}

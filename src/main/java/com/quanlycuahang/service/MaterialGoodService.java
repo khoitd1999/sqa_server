@@ -37,7 +37,7 @@ public class MaterialGoodService {
 	}
 	
 	public MaterialGood findOne(String id) {
-		return materialGoodRepository.findById(Long.parseLong(id)).get();
+		return materialGoodRepository.findOne(Long.parseLong(id));
 	}
 	
 	public List<MaterialGood> findAll() {
@@ -49,7 +49,7 @@ public class MaterialGoodService {
 		if (count1 > 0) {
 			return 1;
 		}
-		materialGoodRepository.deleteById(Long.parseLong(id));
+		materialGoodRepository.deleteOne(Long.parseLong(id));
 		return 0;
 	}
 }

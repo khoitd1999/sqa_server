@@ -2,6 +2,7 @@ package com.quanlycuahang.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -17,5 +18,10 @@ public interface MaterialGoodRepository extends CrudRepository<MaterialGood, Lon
 	@Query(value = "select count(1) from PPOrderDetail where materialGoodID = ?1 ; ", nativeQuery = true)
 	Integer checkRef(Integer id);
 
-	
+	@Query(value = "select * from MaterialGoods where id = ?1 ; ", nativeQuery = true)
+	MaterialGood findOne(Long id);
+
+	@Modifying
+	@Query(value = "delete from MaterialGoods where id = ?1 ;", nativeQuery = true)
+	void deleteOne(Long id);
 }

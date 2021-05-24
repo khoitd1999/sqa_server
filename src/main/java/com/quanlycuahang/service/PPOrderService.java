@@ -1,6 +1,8 @@
 package com.quanlycuahang.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +14,7 @@ import com.quanlycuahang.dto.PPOrderDTO;
 import com.quanlycuahang.dto.SupplierDTO;
 import com.quanlycuahang.entity.MaterialGood;
 import com.quanlycuahang.entity.PPOrder;
+import com.quanlycuahang.entity.PPOrderDetail;
 import com.quanlycuahang.repository.PPOrderRepository;
 
 @Service
@@ -29,6 +32,19 @@ public class PPOrderService {
 	}
 	
 	public Integer save(PPOrder ppOrder) {
+		BigDecimal totalAmount = BigDecimal.ZERO;
+		for (PPOrderDetail detail: ppOrder.getPpOrderDetails()) {
+			if (detail.getAmount() != null && detail.getAmount().doubleValue() != 0) {
+				totalAmount = totalAmount.add(detail.getAmount());
+			}
+			if (detail.getDiscountAmount() != null && detail.getDiscountAmount().doubleValue() != 0) {
+				totalAmount = totalAmount.subtract(detail.getDiscountAmount());
+			}
+			if (detail.getVatAmount() != null && detail.getVatAmount().doubleValue() != 0) {
+				totalAmount = totalAmount.add(detail.getVatAmount());
+			}
+		}
+		ppOrder.setTotalAmount(totalAmount);
 		if (ppOrder.getId() != null) {
 			ppOrderRepository.save(ppOrder);
 			return 0;
@@ -44,7 +60,12 @@ public class PPOrderService {
 	}
 	
 	public PPOrder findOne(String id) {
-		return ppOrderRepository.findById(Long.parseLong(id)).get();
+		Optional<PPOrder> ppOptional = ppOrderRepository.findById(Long.parseLong(id));
+		if (ppOptional.isPresent()) {
+			return ppOptional.get();
+		} else {
+			return null;
+		}
 	}
 	
 	public void delete(String id) {
