@@ -52,4 +52,9 @@ public class MaterialGoodService {
 		materialGoodRepository.deleteOne(Long.parseLong(id));
 		return 0;
 	}
+	
+	// sử dụng cho việc rollback khi chạy selenium
+	public void deleteByCode(String code) {
+		materialGoodRepository.deleteByCode(code);
+	}
 }

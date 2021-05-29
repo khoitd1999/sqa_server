@@ -1,4 +1,4 @@
-package com.quanlycuahang;
+package com.quanlycuahang.junit;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

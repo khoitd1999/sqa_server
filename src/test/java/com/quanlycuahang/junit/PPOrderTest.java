@@ -1,4 +1,4 @@
-package com.quanlycuahang;
+package com.quanlycuahang.junit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

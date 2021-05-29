@@ -24,4 +24,8 @@ public interface MaterialGoodRepository extends CrudRepository<MaterialGood, Lon
 	@Modifying
 	@Query(value = "delete from MaterialGoods where id = ?1 ;", nativeQuery = true)
 	void deleteOne(Long id);
+	
+	@Modifying
+	@Query(value = "delete from MaterialGoods where materialGoodCode = ?1 ;", nativeQuery = true)
+	void deleteByCode(String code);
 }

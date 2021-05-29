@@ -29,7 +29,7 @@ public class MaterialGoodRepositoryImpl implements MaterialGoodRepositoryCustom{
 		List<MaterialGood> result = new ArrayList<MaterialGood>();
 		
 		if (total.longValue() > 0) {
-			Query query = entityManager.createNativeQuery("select * " + sql, MaterialGood.class);
+			Query query = entityManager.createNativeQuery("select * " + sql + " ORDER BY materialGoodCode ", MaterialGood.class);
 			query.setFirstResult((int) pageable.getOffset());
 			query.setMaxResults(pageable.getPageSize());
 			result = query.getResultList();
