@@ -13,11 +13,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.quanlycuahang.entity.MaterialGood;
 import com.quanlycuahang.entity.PPOrder;
 import com.quanlycuahang.entity.PPOrderDetail;
-import com.quanlycuahang.repository.PPOrderDetailRepository;
-import com.quanlycuahang.service.MaterialGoodService;
 import com.quanlycuahang.service.PPOrderService;
 
 public class PPOrderTest extends ApplicationTests {
