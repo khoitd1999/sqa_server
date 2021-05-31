@@ -71,16 +71,16 @@ public class MaterialPage {
     
     /**
 	 * kiểm tra lưu mới một hàng hóa có mã chưa tồn tại
-	 * TH: Nhập thiếu mã hàng
+	 * TH: Nhập thiếu mã hàng or mã hàng đã tồn tại
 	 * */
     @Test
-    public void checkSaveMaterialGoodsNewWithoutCode() throws InterruptedException {
+    public void checkSaveMaterialGoodsNewWithoutCodeOrCodeHasExist() throws InterruptedException {
     	WebElement btnThem = this.driver.findElement(By.xpath("/html/body/app-root/app-materialgood/div/div[1]/div/button[1]"));
     	btnThem.click();
     	
     	Thread.sleep(2000);
     	
-//    	WebElement txtMaHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodCode\"]"));
+    	WebElement txtMaHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodCode\"]"));
     	WebElement txtTenHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodName\"]"));
     	WebElement txtDonVi = this.driver.findElement(By.xpath("//*[@id=\"unit\"]"));
     	WebElement txtDonGia = this.driver.findElement(By.xpath("//*[@id=\"unitPrice\"]"));
@@ -96,7 +96,14 @@ public class MaterialPage {
     	WebElement info = this.driver.findElement(By.xpath("//*[@id=\"toast-container\"]/div/div"));
     	assertEquals(info.getText(), "Bạn chưa nhập mã hàng");
     	
+    	// nhập mã hàng trùng
+    	Thread.sleep(1000);
+    	txtMaHang.sendKeys("MH01");
+    	btnSave.click();
     	Thread.sleep(1500);
+    	WebElement info1 = this.driver.findElement(By.xpath("//*[@id=\"toast-container\"]/div/div"));
+    	assertEquals(info1.getText(), "Lưu mã hàng đã tồn tại trong phần mềm");
+    	Thread.sleep(500);
     }
     
     /**
@@ -195,60 +202,7 @@ public class MaterialPage {
     }
     
     /**
-	 * kiểm tra lưu mới một hàng hóa có mã đã tồn tại
-	 * */
-    @Test
-    public void checkSaveMaterialGoodsNewWithCodeExist() throws InterruptedException {
-    	WebElement btnThem = this.driver.findElement(By.xpath("/html/body/app-root/app-materialgood/div/div[1]/div/button[1]"));
-    	btnThem.click();
-    	
-    	Thread.sleep(2000);
-    	
-    	WebElement txtMaHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodCode\"]"));
-    	WebElement txtTenHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodName\"]"));
-    	WebElement txtDonVi = this.driver.findElement(By.xpath("//*[@id=\"unit\"]"));
-    	WebElement txtDonGia = this.driver.findElement(By.xpath("//*[@id=\"unitPrice\"]"));
-    	WebElement txtSoLuong = this.driver.findElement(By.xpath("//*[@id=\"quantity\"]"));
-    	WebElement btnSave = this.driver.findElement(By.xpath("/html/body/app-root/app-materialgood-update/div/div[1]/div/button[2]"));
-    	
-    	txtMaHang.sendKeys("MH01");
-    	txtTenHang.sendKeys("Mặt hàng 1");
-    	txtDonVi.sendKeys("Bình");
-    	txtDonGia.sendKeys("10000");
-    	txtSoLuong.sendKeys("10");
-    	btnSave.click();
-    	
-    	Thread.sleep(1500);
-    	WebElement info = this.driver.findElement(By.xpath("//*[@id=\"toast-container\"]/div/div"));
-    	assertEquals(info.getText(), "Lưu mã hàng đã tồn tại trong phần mềm");
-    	
-    	Thread.sleep(500);
-    }
-    
-//    /**
-//	 * kiểm tra sửa 1 đơn hàng
-//	 * TH: Xóa, Sửa mã hàng
-//	 * */
-//    @Test
-//    public void checkUpdateMaterialGoodsWithoutCode() throws InterruptedException {
-//    	Thread.sleep(2000);
-//    	// bắt sự kiện dbclick vào 1 row của table để xem chi tiết row đó
-//    	Actions action = new Actions(driver);
-//    	WebElement rowSelect = this.driver.findElement(By.xpath("//*[@id=\"scrollbar\"]/table/tbody/tr[2]/td[1]"));
-//    	action.doubleClick(rowSelect).perform();
-//    	Thread.sleep(2000);
-//    	
-//    	WebElement txtMaHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodCode\"]"));
-////    	WebElement txtTenHang = this.driver.findElement(By.xpath("//*[@id=\"materialGoodName\"]"));
-////    	WebElement txtDonVi = this.driver.findElement(By.xpath("//*[@id=\"unit\"]"));
-////    	WebElement txtDonGia = this.driver.findElement(By.xpath("//*[@id=\"unitPrice\"]"));
-////    	WebElement txtSoLuong = this.driver.findElement(By.xpath("//*[@id=\"quantity\"]"));
-//    	
-//    	txtMaHang.clear();
-//    }
-    
-    /**
-	 * kiểm tra sửa 1 đơn hàng
+	 * kiểm tra sửa 1 hàng hóa
 	 * TH: Các trường vẫn giữ nguyên nhưng Xóa tên hàng hóa
 	 * */
     @Test
@@ -277,7 +231,7 @@ public class MaterialPage {
     }
     
     /**
-	 * kiểm tra sửa 1 đơn hàng
+	 * kiểm tra sửa 1 hàng hóa
 	 * TH: Các trường vẫn giữ nguyên nhưng Xóa đơn giá
 	 * */
     @Test
@@ -305,7 +259,7 @@ public class MaterialPage {
     }
     
     /**
-	 * kiểm tra sửa 1 đơn hàng
+	 * kiểm tra sửa 1 hàng hóa
 	 * TH: Các trường vẫn giữ nguyên nhưng Xóa số lượng
 	 * */
     @Test
@@ -333,8 +287,8 @@ public class MaterialPage {
     }
     
   /**
-	 * kiểm tra sửa 1 đơn hàng
-	 * TH: Sửa giá trị của các trường
+	 * kiểm tra sửa 1 hàng hóa
+	 * TH: Sửa giá trị của các trường với giá trị hợp lệ
 	 * */
   @Test
   public void checkUpdateMaterialGoods() throws InterruptedException {
@@ -368,7 +322,7 @@ public class MaterialPage {
   }
     
     /**
-   	 * kiểm tra xóa 1 đơn hàng
+   	 * kiểm tra xóa 1 hàng hóa
    	 * */
      @Test
      public void checkDeleteMaterialGoods() throws InterruptedException {
@@ -392,7 +346,7 @@ public class MaterialPage {
      }
      
      /**
-     * kiểm tra xóa 1 đơn hàng
+     * kiểm tra xóa 1 hàng hóa
      * TH: Mặt hàng đã phát sinh ở chứng từ nhập hàng
      * */
       @Test
